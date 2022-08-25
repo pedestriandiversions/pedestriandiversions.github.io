@@ -37,6 +37,9 @@ body {
 
 }
 h1 {
+	margin-bottom:0.8em;
+}
+h1.homepage {
 	margin-bottom:0.2em;
 }
 h2 {
