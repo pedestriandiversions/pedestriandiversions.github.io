@@ -72,6 +72,7 @@ h1 {
 }
 h1.homepage {
 	margin-bottom:0.1em;
+	font-size:1.6em;
 }
 h2 {
 	clear:both;
@@ -81,7 +82,7 @@ h2 {
 }
 
 h3 {
-	font-size:1em;
+	font-size:1.2em;
 	margin-bottom:0.5em;
 	margin-top:1.0em;
 }
