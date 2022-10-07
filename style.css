@@ -118,6 +118,10 @@ p {
   display: flex;
 }
 
+ul {
+	text-indent: 0px; 
+    margin-left: 20px;
+}
 li {
 	margin: 0.4em 0;
 }
