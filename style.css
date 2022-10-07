@@ -120,6 +120,7 @@ p {
 
 ul {
 	text-indent: 0px; 
+	padding-right:2em;
 }
 li {
 	margin: 0.4em 0;
