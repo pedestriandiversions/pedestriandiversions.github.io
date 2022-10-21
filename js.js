@@ -15,7 +15,7 @@
 					element.classList.remove('hidden');
 
 				});
-			
+			document.getElementById('indextitle').textContent = 'Bristol videos';
 			
 		});
 		
@@ -35,7 +35,7 @@
 					element.classList.remove('hidden');
 
 				});
-			
+			document.getElementById('indextitle').textContent = 'West country videos';
 			
 		});
 		
@@ -49,6 +49,6 @@
 					element.classList.remove('hidden');
 
 				});
-			
+			document.getElementById('indextitle').textContent = 'All videos';
 		});		
 	});
