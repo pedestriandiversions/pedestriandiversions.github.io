@@ -70,6 +70,7 @@ flex-basis: auto;
 }
 h1 {
 	margin-bottom:0.8em;
+	line-height:1.2;
 }
 h1.homepage {
 	margin-bottom:0.1em;
