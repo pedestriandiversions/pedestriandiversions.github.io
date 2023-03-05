@@ -1,21 +1,20 @@
 	document.addEventListener("DOMContentLoaded", function() {
 
-		function menuToggle(menuId, menuParentClass, otherMenuId, otherMenuParent, showClass, pageTitle) {
+		function menuToggle(menuId, showClass, pageTitle) {
+			// toggle 'active' highlight of menus
 			document.querySelectorAll('.menu a').forEach((element,index) => { element.classList.remove('active'); });
 			document.getElementById(menuId).classList.add('active');
-			
-			// todo - set first a child of .menu a to active, then remove all on menuParentClass, then add as below
-			// or even possibly use :not to avoid redoing eh
-			document.getElementById(otherMenuId).classList.add('active');			
+			// toggle actual display of videos	
 			document.querySelectorAll(".vidcard:not(" + showClass + ")").forEach((element,index) => { element.classList.add('hidden'); });
 			document.querySelectorAll(".vidcard" + showClass).forEach((element,index) => { element.classList.remove('hidden'); });
+			// update page title
 			document.getElementById('indextitle').textContent = pageTitle + ' videos';
 		}
 		
-		function createMenuClickHandler(menuId, menuParentClass, otherMenuId, otherMenuParent, showClass, pageTitle) {
+		function createMenuClickHandler(menuId, showClass, pageTitle) {
 			document.getElementById(menuId).addEventListener('click', function (event) {
 				event.preventDefault();
-				menuToggle(menuId, menuParentClass, otherMenuId, otherMenuParent, showClass, pageTitle);
+				menuToggle(menuId, showClass, pageTitle);
 			});
 		}
 	
@@ -52,57 +51,41 @@
 			document.getElementById(target).appendChild(m);
 		}
 		
-		function createYearMenuItem(year) {
-			showClass = year == 'all' ? '.all' : '.y' + year;
-			upperYear = year.charAt(0).toUpperCase() + year.slice(1);
-			createMenuElement('year', year, upperYear, showClass);
-			createMenuClickHandler('year-' + year, '#year a', 'place-all', '#place a', showClass, upperYear);
-		}
-
-		function createPlaceMenuItem(place, placename) {
-			showClass = '.' + place;
-			createMenuElement('place', place, placename, showClass);
-			createMenuClickHandler('place-' + place, '#place a', 'year-all', '#year a', showClass, placename);
-		}
-		
-		function createTopicMenuItem(topic) {
-			showClass = '.' + topic;
-			upperTopic = topic.charAt(0).toUpperCase() + topic.slice(1);
-			createMenuElement('topic', topic, upperTopic, showClass);
-			createMenuClickHandler('topic-' + topic, '#topic a', 'year-all', '#year a', showClass, upperTopic);
+		function createMenuItem(menuParent, itemClass, itemName, classPrefix) {
+			showClass = '.' + classPrefix + '-' + itemClass;
+			upperCasedName = itemName.charAt(0).toUpperCase() + itemName.slice(1);
+			createMenuElement(menuParent, itemClass, upperCasedName, showClass);
+			createMenuClickHandler(menuParent + '-' + itemClass, showClass, upperCasedName);
 		}
 		
 		function createYearMenu(years) {
 			createFilterHeader('yearfilter', 'Filter by year');
 			createFilterMenu('yearfilter', 'year');
-			years.forEach(createYearMenuItem);	
-			document.getElementById('year-all').classList.add('active');
+			years.forEach((year) => createMenuItem('year', year, year, 'y'));
 		}
 		
 		function createPlaceMenu(places) {
 			createFilterHeader('placefilter', 'Filter by place');
 			createFilterMenu('placefilter', 'place');
-			Object.keys(places).forEach((place) => createPlaceMenuItem(place, places[place]));
-			document.getElementById('place-all').classList.add('active');
+			Object.keys(places).forEach((place) => createMenuItem('place', place, places[place], 'p'));
 		}
 		
 		function createTopicMenu(topics) {
 			createFilterHeader('topicfilter', 'Filter by topic');
 			createFilterMenu('topicfilter', 'topic');
-			topics.forEach((topic) => createTopicMenuItem(topic));
-			document.getElementById('topic-all').classList.add('active');
+			topics.forEach((topic) => createMenuItem('topic', topic, topic, 't'));
 		}
 		
 		createYearMenu(['all', '2023', '2022', '2021']);
 		
 		createPlaceMenu({
 				all: 'All',
-				bris: 'Bristol',
+				bristol: 'Bristol',
 				wc: 'West Country',
 				somerset: 'Somerset',
 				wiltshire: 'Wiltshire'
 			});
 			
-		/* createTopicMenu(['all','architecture','engineering','transport','urbanism']); */
+		createTopicMenu(['all','architecture','engineering','history','transport','urbanism']); 
 				
 	});
