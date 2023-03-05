@@ -19,7 +19,7 @@
 			});
 		}
 	
-		function createMenuElement(target, key, words) {
+		function createMenuElement(target, key, words, showClass) {
 			li = document.createElement('li');
 			fakelink = document.createElement('a');
 			fakelink.id = target + '-' + key;
@@ -27,9 +27,15 @@
 			bullet = document.createElement('span');
 			bullet.innerHTML = '&nbsp;&bull;&nbsp;';
 			bullet.setAttribute("aria-hidden", "true");
+			n = 'n';
+			n = document.querySelectorAll(showClass).length;
+			counter = document.createElement('span');
+			counter.innerHTML = ' (' + n + ')';
+			counter.classList.add('counter');
 			fakelink.appendChild(document.createTextNode(words));
 			li.appendChild(bullet);
 			li.appendChild(fakelink);
+			li.appendChild(counter);
 			document.getElementById(target).appendChild(li);	
 		}
 		
@@ -49,19 +55,21 @@
 		function createYearMenuItem(year) {
 			showClass = year == 'all' ? '.all' : '.y' + year;
 			upperYear = year.charAt(0).toUpperCase() + year.slice(1);
-			createMenuElement('year', year, upperYear);
+			createMenuElement('year', year, upperYear, showClass);
 			createMenuClickHandler('year-' + year, '#year a', 'place-all', '#place a', showClass, upperYear);
 		}
 
 		function createPlaceMenuItem(place, placename) {
-			createMenuElement('place', place, placename);
-			createMenuClickHandler('place-' + place, '#place a', 'year-all', '#year a', '.' + place, placename);
+			showClass = '.' + place;
+			createMenuElement('place', place, placename, showClass);
+			createMenuClickHandler('place-' + place, '#place a', 'year-all', '#year a', showClass, placename);
 		}
 		
 		function createTopicMenuItem(topic) {
+			showClass = '.' + topic;
 			upperTopic = topic.charAt(0).toUpperCase() + topic.slice(1);
-			createMenuElement('topic', topic, upperTopic);
-			createMenuClickHandler('topic-' + topic, '#topic a', 'year-all', '#year a', '.' + topic, upperTopic);
+			createMenuElement('topic', topic, upperTopic, showClass);
+			createMenuClickHandler('topic-' + topic, '#topic a', 'year-all', '#year a', showClass, upperTopic);
 		}
 		
 		function createYearMenu(years) {

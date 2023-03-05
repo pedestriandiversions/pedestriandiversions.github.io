@@ -157,3 +157,11 @@ li {
 	text-decoration:underline;
 	cursor:default;
 }
+.counter {
+	color:#5a5a5a;
+}
+
+.pedantry {
+	font-size:0.9em;
+	font-style:italic;
+}
