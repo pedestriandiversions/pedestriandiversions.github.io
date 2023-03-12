@@ -26,7 +26,6 @@
 			bullet = document.createElement('span');
 			bullet.innerHTML = '&nbsp;&bull;&nbsp;';
 			bullet.setAttribute("aria-hidden", "true");
-			n = 'n';
 			n = document.querySelectorAll(showClass).length;
 			counter = document.createElement('span');
 			counter.innerHTML = ' (' + n + ')';
