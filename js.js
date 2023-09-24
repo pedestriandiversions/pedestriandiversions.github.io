@@ -85,6 +85,6 @@
 				wiltshire: 'Wiltshire'
 			});
 			
-		createTopicMenu(['all','architecture','engineering','history','transport','urbanism']); 
+		createTopicMenu(['all','architecture','bridges','engineering','history','prehistory','transport','urbanism']); 
 				
 	});
