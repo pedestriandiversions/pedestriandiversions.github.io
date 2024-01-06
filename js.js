@@ -75,7 +75,7 @@
 			topics.forEach((topic) => createMenuItem('topic', topic, topic, 't'));
 		}
 		
-		createYearMenu(['all', '2023', '2022', '2021']);
+		createYearMenu(['all', '2024', '2023', '2022', '2021']);
 		
 		createPlaceMenu({
 				all: 'All',
