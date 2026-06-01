@@ -75,14 +75,15 @@
 			topics.forEach((topic) => createMenuItem('topic', topic, topic, 't'));
 		}
 		
-		createYearMenu(['all', '2024', '2023', '2022', '2021']);
+		createYearMenu(['all', '2026', '2024', '2023', '2022', '2021']);
 		
 		createPlaceMenu({
 				all: 'All',
 				bristol: 'Bristol',
 				wc: 'West Country',
 				somerset: 'Somerset',
-				wiltshire: 'Wiltshire'
+				wiltshire: 'Wiltshire',
+				devon: 'Devon'
 			});
 			
 		createTopicMenu(['all','architecture','bridges','engineering','history','prehistory','transport','urbanism']); 
